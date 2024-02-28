@@ -1,0 +1,24 @@
+<div class="w-full">
+    <div class="mx-auto w-[90%] bg-white items-center justify-center my-5 p-5">
+        <div class="w-[90%] mx-auto flex items-center justify-center">
+            <img class="rounded-md shadow-lg " [src]="character.image" alt="">
+        </div>
+        <div class="w-[90%] mx-auto mt-3">
+            <h1 class="text-2xl">
+                {{character.name}}
+            </h1>
+            <p class="text-green-400" *ngIf="character.status == 'Alive'">
+                {{character.status}}
+            </p>
+    
+            <p class="text-red-400" *ngIf="character.status == 'Dead'">
+                {{character.status}}
+            </p>
+    
+            <p class="text-gray-400" *ngIf="character.status != 'Dead' && character.status != 'Alive'">
+                {{character.status}}
+            </p>
+        </div>
+    </div>
+</div>
+

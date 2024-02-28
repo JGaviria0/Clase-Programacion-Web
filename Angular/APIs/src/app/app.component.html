@@ -1,0 +1,13 @@
+<h1>Hola como estan</h1>
+
+<div
+*ngFor="let card of info"
+class="w-screen flex flex-wrap bg-red-800"
+>
+  <app-card
+    class="w-1/2 bg-blue-500 mx-auto"
+    [character]="card"
+  >
+  
+  </app-card>
+</div>
