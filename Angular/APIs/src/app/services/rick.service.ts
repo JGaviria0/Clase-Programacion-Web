@@ -14,7 +14,8 @@ export class RickService {
     return this.http.get(`${this.URL}/character`);
   }
 
-  addCharacter(character: any){
-    return this.http.post(`${this.URL}/addcharacter`, character);
+  createCharacter(character: any){
+    return this.http.post("https://api.escuelajs.co/api/v1/users", character )
   }
 }
+  

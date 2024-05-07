@@ -13,8 +13,12 @@ export class CardComponent {
   @Input() character: any;
 
 
-  ngOnInit() {
-    console.log(this.character);
+  edit(name: string) {
+    console.log(name)
+  }
+
+  delete(name: string) {
+    console.log(name)
   }
 
 }

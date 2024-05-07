@@ -1,5 +1,17 @@
 <h1>Hola como estan</h1>
+<label for="name">Name: </label>
+<input class="border border-green-400" id="name" type="text" [formControl]="name">
 
+<label for="name">Image: </label>
+<input class="border border-green-400" id="name" type="text" [formControl]="image">
+
+<label for="name">Email: </label>
+<input class="border border-green-400" id="name" type="text" [formControl]="email">
+
+<label for="name">Password: </label>
+<input class="border border-green-400" id="name" type="text" [formControl]="password">
+
+<button (click)="onSummit()">Crear Personaje</button>
 <div
 *ngFor="let card of info"
 class="w-screen flex flex-wrap bg-red-800"
