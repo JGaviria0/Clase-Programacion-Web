@@ -1,5 +1,6 @@
 import { NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { RickService } from '../../services/rick.service';
 
 @Component({
   selector: 'app-card',
@@ -10,6 +11,8 @@ import { Component, Input } from '@angular/core';
 })
 export class CardComponent {
 
+  constructor(private readonly rickService: RickService) {}
+
   @Input() character: any;
 
 
@@ -17,8 +20,11 @@ export class CardComponent {
     console.log(name)
   }
 
-  delete(name: string) {
-    console.log(name)
+  delete(id: number) {
+    console.log(id); 
+    this.rickService.deleteCharacter(id).subscribe((res) => {
+      console.log(res);
+      window.location.reload();
+    });
   }
-
 }

@@ -17,5 +17,9 @@ export class RickService {
   createCharacter(character: any){
     return this.http.post("https://api.escuelajs.co/api/v1/users", character )
   }
+
+  deleteCharacter(id: number){
+    return this.http.delete(`https://api.escuelajs.co/api/v1/products/${id}`)
+  }
 }
   
