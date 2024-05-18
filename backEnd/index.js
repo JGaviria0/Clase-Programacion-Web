@@ -1,5 +1,6 @@
 const express = require('express');
 const { createClient } = require("@libsql/client"); 
+const bodyParser = require('body-parser'); 
 
 const client = createClient({
   url: "libsql://testclass2-jgaviria0.turso.io",
@@ -8,11 +9,33 @@ const client = createClient({
 
 const app = express();
 
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
 const PORT = process.env.PORT || 3000;
 
 app.get('/characters', async (req, res) => {
   const characters = await client.execute("SELECT * FROM characters"); 
     res.json({results: characters.rows, info: "ok"});
+}); 
+
+app.post('/characters', async (req, res) => {
+  const { name, status, image } = req.body;
+  
+  const characters = await client.execute(`
+    INSERT INTO characters (name, status, image) VALUES ("${name}", "${status}", "${image}");`
+  ); 
+  res.json({ message: "Character created"});
+}); 
+
+// app.put(''){
+
+// }
+
+app.delete('/characters/:id', async (req, res) => {
+  const { id } = req.params;
+  await client.execute(`DELETE FROM characters WHERE id = ${id}`); 
+  res.json({message: "Character deleted"});
 }); 
 
 app.listen(PORT, () => {
