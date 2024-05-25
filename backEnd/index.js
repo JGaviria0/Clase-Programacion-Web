@@ -1,6 +1,7 @@
 const express = require('express');
 const { createClient } = require("@libsql/client"); 
 const bodyParser = require('body-parser'); 
+const cors = require('cors')
 
 const client = createClient({
   url: "libsql://testclass2-jgaviria0.turso.io",
@@ -9,8 +10,9 @@ const client = createClient({
 
 const app = express();
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(cors());
 
 const PORT = process.env.PORT || 3000;
 
@@ -21,7 +23,7 @@ app.get('/characters', async (req, res) => {
 
 app.post('/characters', async (req, res) => {
   const { name, status, image } = req.body;
-  
+
   const characters = await client.execute(`
     INSERT INTO characters (name, status, image) VALUES ("${name}", "${status}", "${image}");`
   ); 

@@ -8,7 +8,10 @@ export class RickService {
 
   constructor(private http: HttpClient) { }
 
-  URL = 'https://rickandmortyapi.com/api';
+  // URL = 'https://rickandmortyapi.com/api';
+  URL = 'http://localhost:3000';
+
+  //url = 'https://localhost:3000/products';
 
   getCharacters(){
     return this.http.get(`${this.URL}/character`);
